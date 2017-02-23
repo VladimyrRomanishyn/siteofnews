@@ -1,0 +1,8 @@
+.content-container {
+/*  height: 100px;*/
+  background: purple  ;
+  
+}
+.content-container .content {
+  background: #fff;
+}
