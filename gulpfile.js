@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const ts = require('gulp-tsc');
+const ts = require('gulp-typescript');
 
 //-------------------------------------
 
@@ -14,20 +14,10 @@ gulp.task('start', ()=> {
 //-------------------------------------
 //gulp.watch('client/src/**/*.ts',['script']);
 //-------------------------------------
-gulp.task('script', ()=>{
-    gulp.src('client/src/**/*.ts')
-    .pipe(ts({
-        "target": "es5",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "lib": [ "es5", "es2015", "dom" ],
-        "noImplicitAny": false,
-        "suppressImplicitAnyIndexErrors": true,
-        "emitError": false
-    }));
-});
+//gulp.task('script', ()=>{
+//    const tsProject = ts.createProject('tsconfig.json');
+//    gulp.src('client/src/**/*.ts')
+//        .pipe(tsProject());
+//});
 //-------------------------------------
-gulp.task('default',['start','script']);
+gulp.task('default',['start']);

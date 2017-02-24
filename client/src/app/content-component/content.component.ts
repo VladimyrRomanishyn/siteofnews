@@ -1,6 +1,6 @@
-import { Component, Inject} from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { Http } from '@angular/http';
-///dfgf
+
 
 //import {HeaderService} from '../services/header.services';
 
@@ -11,15 +11,16 @@ import { Http } from '@angular/http';
     styleUrls:['content.component.css']
 })
 
-export class ContentComponent {
+export class ContentComponent implements OnInit {
     private data: any;
     private isHidden = false;
-    constructor(@Inject(Http) private http: Http){
-       this.http.get('http://localhost/main/api')
+    constructor(@Inject(Http) private http: Http){}
+
+    ngOnInit(){
+        this.http.get('http://localhost/main/api')
            .subscribe((data)=>{ this.data = data.json()});
-    
-       
     }
+
     create(){
         for(let item of this.data){console.log(item)}
     }
