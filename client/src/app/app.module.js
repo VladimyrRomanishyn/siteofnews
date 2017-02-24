@@ -10,13 +10,9 @@ var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
+var app_routes_1 = require("./app.routes");
 var comoposed_component_1 = require("./composed-component/comoposed.component");
-//import { HeaderComponent }  from './header-component/header.component';
-//import { ContentComponent }  from './content-component/content.component';
-//import { FooterComponent }  from './footer-component/footer.component';
-var appRoutes = [
-    { path: '', component: comoposed_component_1.ComposedComponent },
-];
+var notfound_component_1 = require("./notfound-component/notfound.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,10 +22,11 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
             http_1.HttpModule,
-            router_1.RouterModule.forRoot(appRoutes)
+            router_1.RouterModule.forRoot(app_routes_1.appRoutes)
         ],
         declarations: [app_component_1.AppComponent,
-            comoposed_component_1.ComposedComponent
+            comoposed_component_1.ComposedComponent,
+            notfound_component_1.NotFoundComponent
         ],
         bootstrap: [app_component_1.AppComponent]
     })

@@ -25,6 +25,7 @@
         </nav>
     </div>
 </header>
+<!-- <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>-->
 <!----------------------------------------------------------------------------------------->
 <main class="container-fluid content-container" (click)='create();'>
         <div class="row">
@@ -32,7 +33,7 @@
                     <article *ngFor='let article of articles' [hidden]='isHidden'>
                         <h1>{{article.title}}</h1>
                         <p>{{article.content}}
-                        <a href={{article.refToOriginResourse}}>read more</a>
+                        <a routerLink={{article.refToOriginResourse}}>read more</a>
                         </p>
                     </article>
                     <article *ngFor='let article of data' [hidden]='!isHidden'>
