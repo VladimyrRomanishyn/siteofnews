@@ -2,10 +2,12 @@
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const root = process.env.ROOT;
 
 
 module.exports = (app, route)=>{
      let passwords = mongoose.model('passwords', app.models.auth);
+        
     //Setup the controller for REST
     //let rest = restful.model('siteofnews', app.models.index).methods(['get','put','post','delete']);
     //Register this endpoint with the application.
@@ -25,35 +27,6 @@ module.exports = (app, route)=>{
         }
         
     });
-    app.post(route, (req,res)=>{    
-        if(req.session.token) {
-            console.log(req.session.token);
-        }
-        let login = req.body.login;
-        let password = req.body.password;
-        
-       
-        passwords.findOne({"Login":`${login}`},(err,data)=>{
-            if(err){
-                res.send("Such user don't exist");
-            };
-            if(data != null && password === data.Password){ 
-                
-              
-                
-                
-                let token = jwt.sign({ Login: data.Login }, 
-                                     process.env.SECRET_KEY,
-                                     { expiresIn: '1h' }
-                                    );
-                req.session.token = token;
-                res.redirect('/mpanel');
-                
-                
-            } else {
-                res.send('Error');
-            }       
-        });
-    });
+
 
 }

@@ -16,17 +16,75 @@ var http_1 = require("@angular/http");
 var ComposedComponent = (function () {
     function ComposedComponent(http) {
         this.http = http;
-        this.isHidden = false;
+        //	@ViewChild('mainWidth') mainWidth;
+        //	@ViewChild('feedbackWidth') feedbackWidth;
+        this.articles = [];
+        this.full = false;
+        this.feedbackToggle = false;
+        this.Language = "en";
     }
     ComposedComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.http.get('http://localhost/main/api')
             .subscribe(function (data) { _this.articles = data.json(); });
     };
-    ComposedComponent.prototype.create = function () {
-        for (var _i = 0, _a = this.articles; _i < _a.length; _i++) {
-            var item = _a[_i];
-            console.log(item);
+    ComposedComponent.prototype.feedback = function (event) {
+        var className = event.target.className;
+        if (className == 'fa fa-envelope fa-lg' || className == 'row' || className == 'fa fa-window-close fa-lg') {
+            this.feedbackToggle = !this.feedbackToggle;
+        }
+        else {
+            return;
+        }
+    };
+    ComposedComponent.prototype.detail = function (article) {
+        this.articles = [];
+        this.articles.push(article);
+        this.full = true;
+    };
+    ComposedComponent.prototype.submit = function () {
+        var body = JSON.stringify({
+            title: this.title,
+            email: this.email,
+            message: this.message
+        });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        this.http.post('http://localhost/messages', body, options).subscribe();
+        this.feedbackToggle = !this.feedbackToggle;
+    };
+    ComposedComponent.prototype.changeLanguage = function () {
+        var _this = this;
+        this.full = false;
+        if (this.Language == "en") {
+            //            console.log("en");
+            this.http.get('http://localhost/main/api_rus')
+                .subscribe(function (data) { _this.articles = data.json(); });
+            this.Language = "ru";
+        }
+        else if (this.Language == "ru") {
+            //            console.log("ru");
+            this.http.get('http://localhost/main/api')
+                .subscribe(function (data) { _this.articles = data.json(); });
+            this.Language = "en";
+        }
+    };
+    ComposedComponent.prototype.onSearch = function () {
+        if (this.search === undefined) {
+            return;
+        }
+        var en = /[a-z 0-9]/i;
+        var ru = /[а-я 0-9]/i;
+        if (this.search.match(en)) {
+            this.http.get('http://localhost/search')
+                .subscribe(function (data) {
+                //    console.log(data._body  );
+                //        for (let i of data){console.log(i)}
+                //			});
+            });
+            if (this.search.match(ru)) {
+                console.log('Russian language');
+            }
         }
     };
     return ComposedComponent;
@@ -42,32 +100,4 @@ ComposedComponent = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], ComposedComponent);
 exports.ComposedComponent = ComposedComponent;
-//----------------------------------------------------------------
-//import { Component, Inject, OnInit} from '@angular/core';
-//import { Http } from '@angular/http';
-//
-//
-//
-//@Component({
-//    moduleId: module.id,
-//    selector: 'content-component',
-//    templateUrl: 'content.component.html',
-//    styleUrls:['content.component.css']
-//})
-//
-//export class ContentComponent implements OnInit {
-//    private data: any;
-//    private isHidden = false;
-//    constructor(@Inject(Http) private http: Http){}
-//
-//    ngOnInit(){
-//        this.http.get('http://localhost/main/api')
-//           .subscribe((data)=>{ this.data = data.json()});
-//    }
-//
-//    create(){
-//        for(let item of this.data){console.log(item)}
-//    }
-//    
-//} 
 //# sourceMappingURL=comoposed.component.js.map

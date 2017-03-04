@@ -10,9 +10,9 @@ let articleSchema = new Schema({
     title: String,
     shortContent: String,
     content: String,
-    contentEn: String,
-    imagesRef:String,
-    refToOriginResourse: String
+    //contentEn: String,
+    //imagesRef:String,
+    //refToOriginResourse: String
     
 });
 

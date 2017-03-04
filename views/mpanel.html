@@ -16,16 +16,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 </head>
 <body>
-    <a class="btn btn-primary" href="#" role="button">Link</a>
-    <button class="btn btn-primary" type="submit">Button</button>
-    <input class="btn btn-primary" type="button" value="Input">
-    <input class="btn btn-primary" type="submit" value="Submit">
-    <input class="btn btn-primary" type="reset" value="Reset">
-    <script src="js/jquery/dist/jquery.min.js"></script>
-    <script src="js/tether/dist/js/tether.js"></script>
-    <script src="js/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="js/mpanel/mpanel.js"></script>
+<form method="post" action="/main/api" class='col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 offset-xs-2'>
+  <div class="form-group">
+    <label for="exampleTextarea">Title</label>
+    <textarea class="form-control" id="exampleTextarea" rows="1" name="title"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleTextarea">Short Content</label>
+    <textarea class="form-control" id="exampleTextarea" rows="1" name="shortContent"></textarea>
+  </div>
+  <div class="form-group">
+<!--    <label for="exampleTextarea">Full Content</label>-->
+    <textarea class="form-control" id="editor"  name="content" rows="16"></textarea>
+  </div>  
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <script type="text/javascript">
+				CKEDITOR.replace( 'editor' );
+  </script>
+</form>
 </body>
 </html>

@@ -1,24 +1,25 @@
-<header class="container-fluid">
+
+ <header class="container-fluid">
     <div class="row">
         <nav class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 nav-style">
             <div class="row">
                 <a href="/" class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-xs-center">
                 <img src="images/logo.png" alt="logo">
                 </a>
-                <input type="search"  placeholder="...........Search your item here............." class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-xs-center offset-xs-3">
+                <input type="search"  placeholder="...........Search your item here............." class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-xs-center offset-xs-3" name="search" [(ngModel)]='search'>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                    <div class="row">
-                    <input type="button" (click)='search(data.value);data.value = ""' class="search-button"  value="Go">
+                    <input type="submit"  class="search-button"  value="Go" (click)="onSearch()">
                    </div>
                  </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-xs-right offset-xs-2">
                     <div class="row">
-                        <i class="fa fa-globe fa-lg"></i>
+                        <i class="fa fa-globe fa-lg" (click)="changeLanguage()"></i>
                     </div>
                 </div>
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-xs-center">
-                    <div class="row">
-                        <i class="fa fa-envelope fa-lg"></i>
+                    <div  class="row"  >
+                        <i class="fa fa-envelope fa-lg" (click)="feedback($event)"></i>
                     </div>
                 </div>
             </div>
@@ -26,22 +27,46 @@
     </div>
 </header>
 <!-- <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>-->
-<!----------------------------------------------------------------------------------------->
-<main class="container-fluid content-container" (click)='create();'>
+<!--feedback---------------------------------------------------------------------------->
+<div class="container-fluid feedback-main" #feedbackWidth *ngIf="feedbackToggle"(click)='feedback($event)'>
+	<div class="row">
+		<form class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 offset-xs-3 feedback" (ngSubmit)='submit(); messageForm.reset();' #messageForm = "ngForm">
+			<i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
+			<div class="form-group">
+			  <label for="example-text-input" class="col-2 col-form-label">Title</label>
+			  <div class="col-10">
+				<input class="form-control" type="text" placeholder='Title' id="example-text-input"  [(ngModel)]="title" name="title" required>
+			  </div>
+			</div>
+			 <div class="form-group">
+				<label for="exampleInputEmail1">Email address</label>
+				<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]='email' name='mail'  required>
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			 </div>
+			 <div class="form-group">
+				<label for="exampleTextarea">Message</label>
+				<textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]='message' name='text' required ></textarea>
+			 </div>
+			 <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</div>   
+<!-------------------------------------------------------------------------------------->
+<main class="container-fluid content-container" #mainWidth>
         <div class="row">
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 offset-xs-1 content">
-                    <article *ngFor='let article of articles' [hidden]='isHidden'>
+                    <article *ngFor='let article of articles' (click)="detail(article)">
                         <h1>{{article.title}}</h1>
-                        <p>{{article.content}}
-                        <a routerLink={{article.refToOriginResourse}}>read more</a>
-                        </p>
+                        <div [innerHTML]="full ?article.content: article.shortContent"></div>
                     </article>
+<!--
                     <article *ngFor='let article of data' [hidden]='!isHidden'>
                         <h1>{{article.title}}</h1>
                         <p>{{article.contentFull}}
                        <a href={{article.refToOriginResourse}}>read more</a>
                         </p>
                     </article>
+-->
 <!--<div>{{ data}}}</div>-->
 <!--
                 <nav aria-label="..." class="col-xs-12 col-sm-12 col-md-12 col-12-lg col-xl-12 text-xs-center">
@@ -67,16 +92,17 @@
             </div>
         </div>
     </main>
-<!----------------------------------------------------------------------------------------->
 
-    <footer class="container-fluid footer">
+<!------------------------------------------------------------------------------------->
+
+    <footer class="footer">
         <br>
         <div class="row">
-            <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 col-xl-11">&copy;
+            <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 text-xs-left">&copy;
                  Powered by Vladimir Romanishyn 2017
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 text-xs-center">
-                <i class="fa fa-envelope fa-lg"></i>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 text-xs-center" >
+                <i  class="fa fa-envelope fa-lg" (click)='feedback($event)'></i>
             </div>
         </div>
         <br>

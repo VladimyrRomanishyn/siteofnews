@@ -35,10 +35,14 @@ app.use((req,res,next)=>{
     next();
 });
 //Set static folder 
-app.use(express.static(path.join(__dirname, '/client/src')));
 app.use(express.static(path.join(__dirname, '/client')));
+app.use(express.static(path.join(__dirname, '/client/src')));
+//app.use(express.static(path.join(__dirname, '/client/ckeditor')));
 //--------------------------------------------------------------------------------
 //Connecting to Mongo
+app.get('/test',(req,res)=>{
+    res.sendFile(`${__dirname}/client/src/ckeditor/samples/index.html`);
+});
 mongoose.connect(process.env.CONNECTION_DB);
 mongoose.connection.once('open' , ()=>{
     mongoose.Promise = global.Promise;

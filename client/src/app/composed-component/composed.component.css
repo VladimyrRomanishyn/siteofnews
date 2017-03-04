@@ -55,18 +55,47 @@
 /*-----------------------------------------*/
 .content-container {
 /*  height: 100px;*/
-  background: purple  ;
+  background: purple;
+  min-height: 100%;
   
 }
 .content-container .content {
   background: #fff;
 }
+h1{
+    font-size: 3vw;
+}
 /*------------------------------------------*/
 .footer {
-  
+  padding-left: 1vw;
+  width: 100%;
   background: blue;
   color: #fff;
 }
-.footer img {
-  height: 5wv;
+	.footer img {
+	  height: 5wv;
+	}
+/*------------------------------------------*/
+.feedback-main {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 9999;
+    background: #000;
+    opacity: .9;
+}
+.feedback{
+    border-radius: 3px;
+    background: white;
+    margin-top: 7%;
+    padding: 1%;
+	 
+}
+.fa-window-close{
+    position: absolute;
+    right: 2%;
+}
+.fa-envelope,.fa-window-close,.fa-globe{
+     cursor: pointer;
 }

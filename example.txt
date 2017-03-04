@@ -1,0 +1,58 @@
+{
+    
+    "title": "9 Fantastic Utilities for the Node.js Developer",
+   "shortContent": "Node.js is a tool that's used in a variety of different ways in a variety of different workflows and for a variety of different purposes. Front-end, back-end, APIs, robotics, APIs, and more.",
+    "content": "Node.js is a tool that's used in a variety of different ways in a variety of different workflows and for a variety of different purposes. Front-end, back-end, APIs, robotics, APIs, and more.
+That said, the one that speaks to me, personally, is tooling built for developers (hence why I ❤️ working at NodeSource, on awesome projects like Certified Modules). In my experience, Node.js has been one of the best tools to actually build small, modular tools to make developer's lives easier.
+This week, we've collected a list of nine different modules that you can install globally on your system to help improve your development workflow and get the most out of your development time to be the most efficient developer you can be.
+0. Configuring Global Modules for Node.js
+Before we get to the list of modules, I wanted to note that it's helpful to slightly reconfigure how global modules are set up by default. Luckily, there are just a few steps involved in doing this, and the npm docs have a quick guide that will help you configure global modules.
+1. create-react-app- Fast Scaffolding of React Applications
+Install:
+npm install create-react-app --global
+Create React App is a project out of Facebook to spin up a boilerplate application with React in just one command. It scaffolds out a barebones React application with the necessities, including development tooling and a local server, out of the box testing, and a build step to prepare your React application for production.
+2. standard- Linting in JavaScript Made Easy
+Install:
+npm install standard --global
+Standard is a pre-packaged Linter - there's zero configuration choices to make, there's just the Standard Style. Created by @feross, Standard is a JavaScript linter that's been widely adopted by a variety of projects. As a developer in the Node.js ecosystem, linting is an essential part of working collaboratively on both open source and work projects. Standard ensures that contributed JavaScript follows a consistent standard that's quickly verifiable with a simple CLI command. Following such a standard helps weed out stylistic bugs that can become problematic when multiple developers are contributing to the same codebase.
+3.branch-diff - Diff Git Branches and Print the Results
+Install:
+npm install branch-diff --global
+branch-diff is a CLI tool that diffs two branches in a Git repository and generates a list of the differences between two passed branches. This list can either be output as Markdown or as console output. This small tool is useful when you're working across multiple branches and are looking to get a summary of the differences between two branches - for example when building out a changelog.
+4. nodemon- Automate Restarting Node.js Applications
+Install:
+npm install nodemon --global
+Nodemon is a small utility that will automate restarting a Node.js application when it detects a file change in the directory it's run in. Nodemon is a simple CLI tool that's extremely useful when working on a Node.js application and iterating quickly - it will cut out the repetitive steps of switching to your terminal, ending the application's process, and then restarting the application.
+5.localtunne - Expose localhost Applications Publicly
+Install:
+npm install localtunnel --global
+Localtunnel is a helpful module that will expose an application running on localhostwith a single command. There are a couple examples of when you'd want to use localtunnel. For example, if you're working with APIs and need to provide a public URL, you can use localtunnel to get an online, accessible URL without the need to deploy. Additionally, it's excellent for collaboration - you'll be able to quickly set up a preview of what you're working on to share.
+6. now - Deploy Node.js apps, Dockerfiles, and Static Sites
+Install:
+npm install now --global
+Now is a small service from Zeit that allows you to deploy Node apps, Dockerfiles, and static sites to production quickly. It's great for prototyping out applications and deploying them to the web fast.
+As an added bonus with Now, you can even deploy NodeSource N|Solid with the N|Solid Docker image to Now.
+7. david - Find Out When Your Dependencies are Outdated
+Install:
+npm install david --global
+David is a utility to let you know when a project's npm dependencies are out of date, and provides a way to update any outdated modules easily. One nice feature about David is that it that can be used both on a project-by-project basis or as a global module. This means you can enable dependency checking inside modules you publish or work with in addition to having the ability to check modules on a case by case basis.
+8. nvm - The Node Version Manager
+Install:
+# Since nvm's not an npm module, you can install with cURL or wget
+
+# Install with cURL:
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+
+# Install with wget: 
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+While not a Node.js module, nvm is a CLI tool that's extremely helpful for Node.js developers - it, as you may have guessed, allows version management of Node.js. This means you can download, swap, and test on any version of Node.js. This is handy for testing modules on the Current release line, in addition to the LTS release lines.
+9. npm - The default Node.js package manger!
+Install:
+npm install npm --global
+Something that many people don't consider is that the npm CLI is, in fact, a module - if you're using npm as your package manager of choice, updating the CLI consistently is considered practice. Each version of Node.js has a specific version of npm tied to it - that version is usually going to be behind the latest release of the npm CLI. You can get the latest version of the npm CLI by simply running a global install with npm!
+Just one more thing...
+If you're interested in the Node.js ecosystem, the most useful development tools (have you seen N|Solid or Certified Modules yet?), and developments and growth of the the Node.js community, be sure to follow @NodeSource on Twitter to stay up to date!",
+    
+    "refToOriginResourse": "https://nodesource.com/blog/nine-fantastic-utilities-for-the-node-js-developer"
+    
+}
